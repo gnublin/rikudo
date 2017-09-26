@@ -2,15 +2,17 @@ require 'faraday'
 require 'faraday_middleware'
 
 class Result
+  STATUS_NAMES = %w(OK Warning Critical Unknown)
+
   attr_reader :status, :muted, :host, :retries, :last_ok, :last_failure, :name
 
   def initialize(sensu_results)
     @status = sensu_results['check']['status']
     @muted = false
     @host = sensu_results['client']
-    @retries = sensu_results['check']['occurences']
-    @last_ok = sensu_results['check']['executed']
-    @last_failure = sensu_results['check']['issued']
+    @retries = sensu_results['check']['occurrences']
+    @last_ok = Time.at(sensu_results['check']['executed'])
+    @last_failure = Time.at(sensu_results['check']['issued'])
     @name = sensu_results['check']['name']
   end
 
@@ -30,4 +32,7 @@ class Result
     results
   end
 
+  def status_text
+    STATUS_NAMES[@status]
+  end
 end

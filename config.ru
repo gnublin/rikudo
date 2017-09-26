@@ -6,7 +6,8 @@ require './models/result'
 
 class Rikudo < Sinatra::Base
   get '/' do
-    Result.all
+    @results = Result.all.sort_by(&:status).reverse
+    slim :index
   end
 end
 

@@ -1,0 +1,10 @@
+table
+  tr
+    th Status
+    th Host
+    th Name
+  - @results.each do |result|
+    tr
+      td = result.status_text
+      td = result.host
+      td = result.name
