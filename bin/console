@@ -1,4 +1,7 @@
-#!/usr/bin/env ruby -I.
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+$LOAD_PATH.unshift File.expand_path('..', __dir__)
 
 require 'pry'
 require 'models/result'
