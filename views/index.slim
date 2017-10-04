@@ -1,10 +1,20 @@
-table
-  tr
-    th Status
-    th Host
-    th Name
-  - @results.each do |result|
+- @events.each do |mute_state, events|
+  h1 #{mute_state ? "Muted" : "Active"} checks
+  table
     tr
-      td = result.status_text
-      td = result.host
-      td = result.name
+      th Muted
+      th Status
+      th Host
+      th Check name
+      th Occurrences
+      th Last OK
+      th Last failure
+    - events.each do |event|
+      tr
+        td = event.muted
+        td = event.status_text
+        td = event.host
+        td = event.name
+        td = event.retries
+        td = event.last_ok
+        td = event.last_failure
