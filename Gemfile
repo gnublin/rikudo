@@ -6,6 +6,7 @@ gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'shotgun'
 gem 'slim'
+gem 'rspec'
 
 group :development do
   gem 'pry'
