@@ -1,7 +1,7 @@
-require 'sinatra/base'
+require 'bundler/setup'
+Bundler.require
+
 require 'sinatra/json'
-require 'active_support/all'
-require 'pry'
 require './models/event'
 
 class Rikudo < Sinatra::Base

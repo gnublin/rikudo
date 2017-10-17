@@ -2,14 +2,14 @@ source 'https://rubygems.org'
 
 gem 'faraday'
 gem 'faraday_middleware'
-gem 'sinatra'
+gem 'sinatra', require: 'sinatra/base'
 gem 'sinatra-contrib'
-gem 'shotgun'
 gem 'slim'
-gem 'rspec'
-gem 'activesupport'
+gem 'rspec', require: false
+gem 'activesupport', require: 'active_support/all'
 
 group :development do
+  gem 'shotgun', require: false
   gem 'pry'
   gem 'pry-byebug'
 end
