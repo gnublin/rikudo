@@ -4,7 +4,7 @@ require 'faraday_middleware'
 class Event
   STATUS_NAMES = %w(OK Warning Critical Unknown)
 
-  attr_reader :status, :muted, :host, :retries, :last_ok, :last_failure, :name
+  attr_reader :status, :muted, :host, :retries, :last_ok, :last_failure, :name, :threshold
 
   def initialize(sensu_events)
     @status = sensu_events['check']['status']
@@ -13,6 +13,7 @@ class Event
     @retries = sensu_events['occurrences']
     @last_ok = Time.at(sensu_events['last_ok'])
     @last_failure = Time.at(sensu_events['check']['issued'])
+    @threshold = sensu_events['check']['occurrences']
     @name = sensu_events['check']['name']
   end
 
@@ -33,20 +34,25 @@ class Event
     events
   end
 
-  def self.for_display(sorted: :status, muted: true, reverse: false)
-    all_results = all.sort_by(&sorted)
+  def self.for_display(sorted: :status, muted: true, reverse: false, threshold: false)
+
+    if threshold
+      all_results = all.reject{|t| t.threshold.to_i < t.retries.to_i}
+    else
+      all_results = all
+    end
+
+    all_results = all_results.sort_by(&sorted)
     if reverse
       all_results = all_results.reverse
     end
 
     all_results = all_results.group_by(&:muted)
-
     unless muted
       all_results.delete true
     end
 
     all_results
-    
   end
 
   def status_text
