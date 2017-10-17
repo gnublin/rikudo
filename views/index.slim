@@ -1,5 +1,6 @@
 - @events.each do |mute_state, events|
-  h1 #{mute_state ? "Muted" : "Active"} checks
+  - if @events.keys.size > 1
+    h1 #{mute_state ? "Muted" : "Active"} checks
   table
     tr
       th Muted

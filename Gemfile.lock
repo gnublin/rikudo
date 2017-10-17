@@ -7,6 +7,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     backports (3.8.0)
+    byebug (9.1.0)
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
     diff-lcs (1.3)
@@ -24,6 +25,9 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (3.5.0)
+      byebug (~> 9.1)
+      pry (~> 0.10)
     rack (2.0.3)
     rack-protection (2.0.0)
       rack
@@ -72,6 +76,7 @@ DEPENDENCIES
   faraday
   faraday_middleware
   pry
+  pry-byebug
   rspec
   shotgun
   sinatra

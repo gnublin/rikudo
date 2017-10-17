@@ -33,8 +33,20 @@ class Event
     events
   end
 
-  def self.for_display
-    all.sort_by(&:status).reverse.group_by(&:muted)
+  def self.for_display(sorted: :status, muted: true, reverse: false)
+    all_results = all.sort_by(&sorted)
+    if reverse
+      all_results = all_results.reverse
+    end
+
+    all_results = all_results.group_by(&:muted)
+
+    unless muted
+      all_results.delete true
+    end
+
+    all_results
+    
   end
 
   def status_text

@@ -11,4 +11,5 @@ gem 'activesupport'
 
 group :development do
   gem 'pry'
+  gem 'pry-byebug'
 end
