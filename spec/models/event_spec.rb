@@ -4,11 +4,13 @@ require 'time'
 require 'json'
 
 describe Event do
-  sensu = JSON.parse(File.read('toto.json'))
-  sensu = sensu.first
+  before do
+    data = JSON.parse(IO.read('sample.json'))
+    allow(Event).to receive(:fetch_events).and_return(data)
+  end
 
   describe '#initialize' do
-    subject { Event.new(sensu) }
+    subject { Event.all.first }
 
     it('sets status') { expect(subject.status).to eql 1 }
     it('sets muted') { expect(subject.muted).to be false }
