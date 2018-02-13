@@ -17,40 +17,44 @@ class Event
     @name = sensu_events['check']['name']
   end
 
-  def self.all
-    events = JSON.parse(File.read('toto.json'))
-    if ENV['RACK_ENV'] == 'production'
+  class << self
+    def all
+      fetch_events.map! do |t|
+        Event.new(t)
+      end
+    end
+
+    def for_display(sorted: :status, muted: true, reverse: false, threshold: false)
+      if threshold
+        all_results = all.reject{|t| t.threshold.to_i < t.retries.to_i}
+      else
+        all_results = all
+      end
+
+      all_results = all_results.sort_by(&sorted)
+      if reverse
+        all_results = all_results.reverse
+      end
+
+      all_results = all_results.group_by(&:muted)
+      unless muted
+        all_results.delete true
+      end
+
+      all_results
+    end
+
+    private
+
+    def fetch_events
       sensu = Faraday.new(url: 'http://localhost:4567') do |faraday|
         faraday.response :json
         faraday.headers['Content-Type'] = 'application/json'
         faraday.adapter Faraday.default_adapter
       end
-      events = sensu.get('/events').body
-    end
-    events.map! do |t|
-      Event.new(t)
-    end
-    events
-  end
 
-  def self.for_display(sorted: :status, muted: true, reverse: false, threshold: false)
-    if threshold
-      all_results = all.reject{|t| t.threshold.to_i < t.retries.to_i}
-    else
-      all_results = all
+      sensu.get('/events').body
     end
-
-    all_results = all_results.sort_by(&sorted)
-    if reverse
-      all_results = all_results.reverse
-    end
-
-    all_results = all_results.group_by(&:muted)
-    unless muted
-      all_results.delete true
-    end
-
-    all_results
   end
 
   def status_text
