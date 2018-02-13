@@ -1,0 +1,1234 @@
+[
+  {
+    "client": {
+      "name": "lb00-test",
+      "address": "192.0.2.99",
+      "environment": "test",
+      "subscriptions": [
+        "debian",
+        "haproxy",
+        "client:lb00-test"
+      ],
+      "socket": {
+        "bind": "0.0.0.0",
+        "port": 3030
+      },
+      "graphite_server": "graphite00-test.local:79",
+      "version": "1.0.2",
+      "timestamp": 1507030283
+    },
+    "check": {
+      "command": "/opt/sensu-plugins/check_systemd_service -s filebeat",
+      "interval": 60,
+      "subscribers": [
+        "debian"
+      ],
+      "handlers": [
+        "mailer-infra",
+        "slack"
+      ],
+      "occurrences": 3,
+      "refresh": 86400,
+      "name": "service-filebeat",
+      "issued": 1507030292,
+      "executed": 1507030292,
+      "duration": 0.025,
+      "output": "WARNING - Active: inactive (dead)\n",
+      "status": 1,
+      "type": "standard",
+      "history": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "total_state_change": 0
+    },
+    "occurrences": 142434,
+    "occurrences_watermark": 1,
+    "action": "create",
+    "timestamp": 1507030292,
+    "id": "7eeb3b58-fc2f-4af2-9bc6-5e718896cbc2",
+    "last_state_change": 1498484013,
+    "last_ok": 1498484013,
+    "silenced": false,
+    "silenced_by": []
+  },
+  {
+    "client": {
+      "name": "jenkins00-test",
+      "address": "192.0.2.50",
+      "environment": "test",
+      "subscriptions": [
+        "debian",
+        "jenkins",
+        "client:jenkins00-test"
+      ],
+      "socket": {
+        "bind": "0.0.0.0",
+        "port": 3030
+      },
+      "graphite_server": "graphite00-test.local:79",
+      "version": "1.0.2",
+      "timestamp": 1507030278
+    },
+    "check": {
+      "command": "/opt/sensu-plugins/check_systemd_service -s filebeat",
+      "interval": 60,
+      "subscribers": [
+        "debian"
+      ],
+      "handlers": [
+        "mailer-infra",
+        "slack"
+      ],
+      "occurrences": 3,
+      "refresh": 86400,
+      "name": "service-filebeat",
+      "issued": 1507030292,
+      "executed": 1507030292,
+      "duration": 0.025,
+      "output": "WARNING - Active: inactive (dead)\n",
+      "status": 1,
+      "type": "standard",
+      "history": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "total_state_change": 0
+    },
+    "occurrences": 1399,
+    "occurrences_watermark": 141034,
+    "action": "create",
+    "timestamp": 1507030292,
+    "id": "3bbd07e9-6409-4439-932b-d8fee076ec31",
+    "last_state_change": 1506946407,
+    "last_ok": 1498484013,
+    "silenced": false,
+    "silenced_by": []
+  },
+  {
+    "client": {
+      "name": "jenkins00-test",
+      "address": "192.0.2.50",
+      "environment": "test",
+      "subscriptions": [
+        "debian",
+        "jenkins",
+        "client:jenkins00-test"
+      ],
+      "socket": {
+        "bind": "0.0.0.0",
+        "port": 3030
+      },
+      "graphite_server": "graphite00-test.local:79",
+      "version": "1.0.2",
+      "timestamp": 1507030298
+    },
+    "check": {
+      "command": "check-disk-usage.rb -I /backup -w :::disk-usage-backup-nfs.warning|80:::% -c :::disk-usage-backup-nfs.critical|90:::%",
+      "interval": 60,
+      "subscribers": [
+        "jenkins"
+      ],
+      "handlers": [
+        "mailer-infra",
+        "slack"
+      ],
+      "occurrences": 3,
+      "refresh": 86400,
+      "name": "disk-usage-backup-nfs",
+      "issued": 1507030305,
+      "executed": 1507030305,
+      "duration": 0.104,
+      "output": "CheckDisk WARNING: /backup 87.61% bytes usage (344.83 GiB/393.60 GiB)\n",
+      "status": 1,
+      "type": "standard",
+      "history": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "total_state_change": 0
+    },
+    "occurrences": 340,
+    "occurrences_watermark": 138977,
+    "action": "create",
+    "timestamp": 1507030305,
+    "id": "f1dededf-c766-402b-9fb2-7b0e952bf404",
+    "last_state_change": 1507009965,
+    "last_ok": 1498484026,
+    "silenced": false,
+    "silenced_by": []
+  },
+  {
+    "client": {
+      "name": "jenkins00-test",
+      "address": "192.0.2.50",
+      "environment": "test",
+      "subscriptions": [
+        "debian",
+        "jenkins",
+        "client:jenkins00-test"
+      ],
+      "socket": {
+        "bind": "0.0.0.0",
+        "port": 3030
+      },
+      "graphite_server": "graphite00-test.local:79",
+      "version": "1.0.2",
+      "timestamp": 1507030298
+    },
+    "check": {
+      "command": "check-graphite-data.rb -s graphite00-test.local:79 -t jenkins00-test.jenkins.gauge-jenkins_failed_jobs -c 0",
+      "interval": 300,
+      "handlers": [
+        "mailer",
+        "slack"
+      ],
+      "occurrences": 3,
+      "standalone": true,
+      "name": "jenkins-failed-jobs",
+      "issued": 1507030307,
+      "executed": 1507030307,
+      "duration": 0.104,
+      "output": "CheckGraphiteData CRITICAL: jenkins00-test.jenkins.gauge-jenkins_failed_jobs has passed critical threshold (3.0)\n",
+      "status": 2,
+      "type": "standard",
+      "history": [
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2"
+      ],
+      "total_state_change": 0
+    },
+    "occurrences": 278,
+    "occurrences_watermark": 2808,
+    "action": "create",
+    "timestamp": 1507030307,
+    "id": "ad0b53f5-edc5-4ca2-8325-aad90fc889f7",
+    "last_state_change": 1506947209,
+    "last_ok": 1506103920,
+    "silenced": false,
+    "silenced_by": []
+  },
+  {
+    "client": {
+      "name": "sql02-test",
+      "address": "192.0.2.5",
+      "environment": "test",
+      "subscriptions": [
+        "debian",
+        "keepalived",
+        "sql_base",
+        "sql",
+        "client:sql02-test"
+      ],
+      "socket": {
+        "bind": "0.0.0.0",
+        "port": 3030
+      },
+      "graphite_server": "graphite00-test.local:79",
+      "version": "1.0.2",
+      "timestamp": 1507030267
+    },
+    "check": {
+      "command": "/opt/sensu-plugins/check_vrrp_flap",
+      "interval": 120,
+      "subscribers": [
+        "debian"
+      ],
+      "handlers": [
+        "mailer-infra",
+        "slack"
+      ],
+      "occurrences": 3,
+      "refresh": 86400,
+      "name": "vrrp-flap",
+      "issued": 1507030276,
+      "executed": 1507030276,
+      "duration": 0.012,
+      "output": "CRITICAL - One or more VIPs have flapped: sqlmaster\n",
+      "status": 2,
+      "type": "standard",
+      "history": [
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2"
+      ],
+      "total_state_change": 0
+    },
+    "occurrences": 70333,
+    "occurrences_watermark": 70333,
+    "action": "create",
+    "timestamp": 1507030276,
+    "id": "c071b631-4eea-4361-93dc-e2d30c8195ee",
+    "last_state_change": 1498590196,
+    "last_ok": 1498590196,
+    "silenced": false,
+    "silenced_by": []
+  },
+  {
+    "client": {
+      "name": "spy-test",
+      "address": "192.0.2.63",
+      "environment": "test",
+      "subscriptions": [
+        "debian",
+        "client:spy-test"
+      ],
+      "socket": {
+        "bind": "0.0.0.0",
+        "port": 3030
+      },
+      "graphite_server": "graphite00-test.local:79",
+      "version": "1.0.2",
+      "timestamp": 1507030289
+    },
+    "check": {
+      "command": "/opt/sensu-plugins/check_systemd_service -s filebeat",
+      "interval": 60,
+      "subscribers": [
+        "debian"
+      ],
+      "handlers": [
+        "mailer-infra",
+        "slack"
+      ],
+      "occurrences": 3,
+      "refresh": 86400,
+      "name": "service-filebeat",
+      "issued": 1507030292,
+      "executed": 1507030292,
+      "duration": 0.031,
+      "output": "WARNING - Active: inactive (dead)\n",
+      "status": 1,
+      "type": "standard",
+      "history": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "total_state_change": 0
+    },
+    "occurrences": 40180,
+    "occurrences_watermark": 40180,
+    "action": "create",
+    "timestamp": 1507030292,
+    "id": "ddbd7ef4-e413-49a6-803f-81fd25f2c1cf",
+    "last_state_change": 1504619465,
+    "last_ok": 1504619465,
+    "silenced": false,
+    "silenced_by": []
+  },
+  {
+    "client": {
+      "name": "web01-test",
+      "address": "192.0.2.11",
+      "environment": "test",
+      "subscriptions": [
+        "debian",
+        "web-company",
+        "nginx",
+        "company",
+        "client:web01-test"
+      ],
+      "socket": {
+        "bind": "0.0.0.0",
+        "port": 3030
+      },
+      "graphite_server": "graphite00-test.local:79",
+      "version": "1.0.2",
+      "timestamp": 1507030264
+    },
+    "check": {
+      "command": "/opt/sensu-plugins/check_systemd_service -s company",
+      "interval": 60,
+      "subscribers": [
+        "web-company"
+      ],
+      "handlers": [
+        "mailer-infra",
+        "slack"
+      ],
+      "occurrences": 3,
+      "refresh": 86400,
+      "name": "service-company",
+      "issued": 1507030277,
+      "executed": 1507030277,
+      "duration": 0.017,
+      "output": "CRITICAL - Active: active (exited) since Wed 2017-02-22 09:26:39 GMT; 7 months 10 days ago\n",
+      "status": 2,
+      "type": "standard",
+      "history": [
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2"
+      ],
+      "total_state_change": 0
+    },
+    "occurrences": 102192,
+    "occurrences_watermark": 102192,
+    "action": "create",
+    "timestamp": 1507030277,
+    "id": "63d17ec4-4cc1-439d-b0b9-68c5da089f93",
+    "last_state_change": 1500898755,
+    "last_ok": 1500898755,
+    "silenced": false,
+    "silenced_by": []
+  },
+  {
+    "client": {
+      "name": "web01-test",
+      "address": "192.0.2.11",
+      "environment": "test",
+      "subscriptions": [
+        "debian",
+        "web-company",
+        "nginx",
+        "company",
+        "client:web01-test"
+      ],
+      "socket": {
+        "bind": "0.0.0.0",
+        "port": 3030
+      },
+      "graphite_server": "graphite00-test.local:79",
+      "version": "1.0.2",
+      "timestamp": 1507030284
+    },
+    "check": {
+      "command": "/opt/sensu-plugins/check_worker_process",
+      "interval": 60,
+      "subscribers": [
+        "web-company"
+      ],
+      "handlers": [
+        "mailer-infra",
+        "slack"
+      ],
+      "occurrences": 3,
+      "refresh": 86400,
+      "name": "worker-process",
+      "issued": 1507030288,
+      "executed": 1507030288,
+      "duration": 0.015,
+      "output": "WARNING - less of 20 worker process in operation\n",
+      "status": 1,
+      "type": "standard",
+      "history": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "total_state_change": 0
+    },
+    "occurrences": 138322,
+    "occurrences_watermark": 138322,
+    "action": "create",
+    "timestamp": 1507030288,
+    "id": "edf73538-02dd-4bad-8c64-e2abd1f30823",
+    "last_state_change": 1498730727,
+    "last_ok": 1498484009,
+    "silenced": false,
+    "silenced_by": []
+  },
+  {
+    "client": {
+      "name": "logstash00-test",
+      "address": "192.0.2.53",
+      "environment": "test",
+      "subscriptions": [
+        "debian",
+        "elasticsearch",
+        "logstash",
+        "client:logstash00-test"
+      ],
+      "socket": {
+        "bind": "0.0.0.0",
+        "port": 3030
+      },
+      "graphite_server": "graphite00-test.local:79",
+      "version": "1.0.2",
+      "timestamp": 1507030279
+    },
+    "check": {
+      "command": "/opt/sensu-plugins/check_systemd_service -s logstash",
+      "interval": 60,
+      "subscribers": [
+        "logstash"
+      ],
+      "handlers": [
+        "mailer-infra",
+        "slack"
+      ],
+      "occurrences": 3,
+      "refresh": 86400,
+      "name": "service-logstash",
+      "issued": 1507030282,
+      "executed": 1507030282,
+      "duration": 0.016,
+      "output": "UKNOWN - ● logstash.service - logstash\n   Loaded: loaded (/etc/systemd/system/logstash.service; enabled)\n   Active: failed (Result: start-limit) since Tue 2017-10-03 08:50:47 GMT; 2h 40min ago\n  Process: 13247 ExecStart=/usr/share/logstash/bin/logstash --path.settings /etc/logstash (code=exited, status=203/EXEC)\n Main PID: 13247 (code=exited, status=203/EXEC)\n\n",
+      "status": 3,
+      "type": "standard",
+      "history": [
+        "3",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3"
+      ],
+      "total_state_change": 0
+    },
+    "occurrences": 67565,
+    "occurrences_watermark": 67565,
+    "action": "create",
+    "timestamp": 1507030282,
+    "id": "0f67ba21-3c45-4131-a680-3bd4f6e9bce1",
+    "last_state_change": 1502976375,
+    "last_ok": 1502976375,
+    "silenced": true,
+    "silenced_by": [
+      "client:logstash00-test:service-logstash"
+    ]
+  },
+  {
+    "client": {
+      "name": "misc00-test",
+      "address": "192.0.2.100",
+      "environment": "test",
+      "subscriptions": [
+        "debian",
+        "supervisord",
+        "client:misc00-test"
+      ],
+      "socket": {
+        "bind": "0.0.0.0",
+        "port": 3030
+      },
+      "version": "0.29.0",
+      "timestamp": 1500558461
+    },
+    "check": {
+      "command": "check-graphite-data.rb -s graphite00-test.local:79 -t misc00-test.company_es_sync_cron_locked_locked -c 7200",
+      "interval": 120,
+      "handlers": [
+        "mailer",
+        "slack"
+      ],
+      "occurrences": 3,
+      "standalone": true,
+      "name": "cron-jobs",
+      "issued": 1500558462,
+      "executed": 1500558462,
+      "duration": 0.232,
+      "output": "Check failed to run: undefined method `unknown' for #<SensuPluginsGraphite::GraphiteProxy::Proxy:0x000000027acb58>, [\"/opt/sensu/embedded/lib/ruby/gems/2.4.0/gems/sensu-plugins-graphite-2.0.0/lib/sensu-plugins-graphite/graphite_proxy/proxy.rb:91:in `retrieve_data!'\", \"/opt/sensu/embedded/lib/ruby/gems/2.4.0/gems/sensu-plugins-graphite-2.0.0/bin/check-graphite-data.rb:61:in `run'\", \"/opt/sensu/embedded/lib/ruby/gems/2.4.0/gems/sensu-plugin-1.4.5/lib/sensu-plugin/cli.rb:58:in `block in <class:CLI>'\"]\n",
+      "status": 2,
+      "type": "standard",
+      "history": [
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2"
+      ],
+      "total_state_change": 0
+    },
+    "occurrences": 24,
+    "occurrences_watermark": 24,
+    "action": "create",
+    "timestamp": 1500558462,
+    "id": "5cce924d-9fe2-4acc-979f-727c9753ee1a",
+    "last_state_change": 1500555702,
+    "last_ok": 1500555702,
+    "silenced": false,
+    "silenced_by": []
+  },
+  {
+    "client": {
+      "name": "misc00-test",
+      "address": "192.0.2.100",
+      "environment": "test",
+      "subscriptions": [
+        "debian",
+        "resque",
+        "supervisord",
+        "client:misc00-test"
+      ],
+      "socket": {
+        "bind": "0.0.0.0",
+        "port": 3030
+      },
+      "graphite_server": "graphite00-test.local:79",
+      "version": "1.0.2",
+      "timestamp": 1507030296
+    },
+    "check": {
+      "command": "check-disk-usage.rb -I / -w :::disk-usage-root.warning|80:::% -c :::disk-root.critical|90:::%",
+      "interval": 60,
+      "subscribers": [
+        "debian"
+      ],
+      "handlers": [
+        "mailer-infra",
+        "slack"
+      ],
+      "occurrences": 3,
+      "refresh": 86400,
+      "name": "disk-usage-root",
+      "issued": 1507030304,
+      "executed": 1507030304,
+      "duration": 0.059,
+      "output": "CheckDisk WARNING: / 87.56% bytes usage (12.82 GiB/14.64 GiB), / 87.56% bytes usage (12.82 GiB/14.64 GiB)\n",
+      "status": 1,
+      "type": "standard",
+      "history": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "total_state_change": 0
+    },
+    "occurrences": 1538,
+    "occurrences_watermark": 6811,
+    "action": "create",
+    "timestamp": 1507030304,
+    "id": "49ace0c4-302f-4121-ae5c-f0751b218577",
+    "last_state_change": 1506938079,
+    "last_ok": 1505734303,
+    "silenced": false,
+    "silenced_by": []
+  },
+  {
+    "client": {
+      "name": "graphite00-test",
+      "address": "192.0.2.70",
+      "environment": "test",
+      "subscriptions": [
+        "debian",
+        "client:graphite00-test"
+      ],
+      "socket": {
+        "bind": "0.0.0.0",
+        "port": 3030
+      },
+      "graphite_server": "graphite00-test.local:79",
+      "version": "1.0.2",
+      "timestamp": 1507030292
+    },
+    "check": {
+      "command": "/opt/sensu-plugins/check_systemd_service -s filebeat",
+      "interval": 60,
+      "subscribers": [
+        "debian"
+      ],
+      "handlers": [
+        "mailer-infra",
+        "slack"
+      ],
+      "occurrences": 3,
+      "refresh": 86400,
+      "name": "service-filebeat",
+      "issued": 1507030292,
+      "executed": 1507030292,
+      "duration": 0.022,
+      "output": "WARNING - Active: inactive (dead)\n",
+      "status": 1,
+      "type": "standard",
+      "history": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "total_state_change": 0
+    },
+    "occurrences": 142434,
+    "occurrences_watermark": 142434,
+    "action": "create",
+    "timestamp": 1507030292,
+    "id": "655c408a-a0f2-4899-8812-c3d8d8d8e4d8",
+    "last_state_change": 1498484013,
+    "last_ok": 1498484013,
+    "silenced": false,
+    "silenced_by": []
+  },
+  {
+    "client": {
+      "name": "web00-test",
+      "address": "192.0.2.10",
+      "environment": "test",
+      "subscriptions": [
+        "debian",
+        "web-company",
+        "nginx",
+        "company",
+        "client:web00-test"
+      ],
+      "socket": {
+        "bind": "0.0.0.0",
+        "port": 3030
+      },
+      "graphite_server": "graphite00-test.local:79",
+      "version": "1.0.2",
+      "timestamp": 1507030270
+    },
+    "check": {
+      "command": "/opt/sensu-plugins/check_systemd_service -s company",
+      "interval": 60,
+      "subscribers": [
+        "web-company"
+      ],
+      "handlers": [
+        "mailer-infra",
+        "slack"
+      ],
+      "occurrences": 3,
+      "refresh": 86400,
+      "name": "service-company",
+      "issued": 1507030277,
+      "executed": 1507030277,
+      "duration": 0.017,
+      "output": "CRITICAL - Active: active (exited) since Wed 2017-07-19 09:47:32 GMT; 2 months 15 days ago\n",
+      "status": 2,
+      "type": "standard",
+      "history": [
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2",
+        "2"
+      ],
+      "total_state_change": 0
+    },
+    "occurrences": 8729,
+    "occurrences_watermark": 8729,
+    "action": "create",
+    "timestamp": 1507030277,
+    "id": "45d69a08-36a0-4f5e-b9de-ef835d2dfb0f",
+    "last_state_change": 1506506540,
+    "last_ok": 1505997857,
+    "silenced": false,
+    "silenced_by": []
+  },
+  {
+    "client": {
+      "name": "web00-test",
+      "address": "192.0.2.10",
+      "environment": "test",
+      "subscriptions": [
+        "debian",
+        "web-company",
+        "nginx",
+        "company",
+        "client:web00-test"
+      ],
+      "socket": {
+        "bind": "0.0.0.0",
+        "port": 3030
+      },
+      "graphite_server": "graphite00-test.local:79",
+      "version": "1.0.2",
+      "timestamp": 1507030270
+    },
+    "check": {
+      "command": "/opt/sensu-plugins/check_worker_process",
+      "interval": 60,
+      "subscribers": [
+        "web-company"
+      ],
+      "handlers": [
+        "mailer-infra",
+        "slack"
+      ],
+      "occurrences": 3,
+      "refresh": 86400,
+      "name": "worker-process",
+      "issued": 1507030288,
+      "executed": 1507030288,
+      "duration": 0.006,
+      "output": "WARNING - less of 20 worker process in operation\n",
+      "status": 1,
+      "type": "standard",
+      "history": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "total_state_change": 0
+    },
+    "occurrences": 8730,
+    "occurrences_watermark": 99535,
+    "action": "create",
+    "timestamp": 1507030288,
+    "id": "daf6bac5-df61-4812-a7c6-21b930c0f404",
+    "last_state_change": 1506506548,
+    "last_ok": 1498484009,
+    "silenced": false,
+    "silenced_by": []
+  },
+  {
+    "client": {
+      "name": "web03-test",
+      "address": "192.0.2.17",
+      "subscriptions": [
+        "debian",
+        "web-company",
+        "nginx",
+        "company",
+        "client:web03-test"
+      ],
+      "socket": {
+        "bind": "0.0.0.0",
+        "port": 3030
+      },
+      "graphite_server": "graphite00-test.local:79",
+      "version": "1.0.2",
+      "timestamp": 1507030264
+    },
+    "check": {
+      "command": "/opt/sensu-plugins/check_systemd_service -s company",
+      "interval": 60,
+      "subscribers": [
+        "web-company"
+      ],
+      "handlers": [
+        "mailer-infra",
+        "slack"
+      ],
+      "occurrences": 3,
+      "refresh": 86400,
+      "name": "service-company",
+      "issued": 1507030277,
+      "executed": 1507030277,
+      "duration": 0.016,
+      "output": "WARNING - Active: inactive (dead)\n",
+      "status": 1,
+      "type": "standard",
+      "history": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "total_state_change": 0
+    },
+    "occurrences": 168,
+    "occurrences_watermark": 168,
+    "action": "create",
+    "timestamp": 1507030277,
+    "id": "5b3b74e5-1aad-43ed-920e-9b421131d309",
+    "last_state_change": 1507020258,
+    "last_ok": 1507020258,
+    "silenced": false,
+    "silenced_by": []
+  },
+  {
+    "client": {
+      "name": "web03-test",
+      "address": "192.0.2.17",
+      "subscriptions": [
+        "debian",
+        "web-company",
+        "nginx",
+        "company",
+        "client:web03-test"
+      ],
+      "socket": {
+        "bind": "0.0.0.0",
+        "port": 3030
+      },
+      "graphite_server": "graphite00-test.local:79",
+      "version": "1.0.2",
+      "timestamp": 1507030284
+    },
+    "check": {
+      "command": "check-graphite-data.rb -s :::graphite_server::: -t stats.timers.http.:::name:::.time.upper -c 5000 -a 120",
+      "interval": 60,
+      "subscribers": [
+        "web-company"
+      ],
+      "handlers": [
+        "mailer-infra",
+        "slack"
+      ],
+      "occurrences": 3,
+      "refresh": 86400,
+      "name": "http-response-time",
+      "issued": 1507030302,
+      "executed": 1507030302,
+      "duration": 0.1,
+      "output": "CheckGraphiteData UNKNOWN: No data for time period and/or target\n",
+      "status": 3,
+      "type": "standard",
+      "history": [
+        "3",
+        "3",
+        "3",
+        "0",
+        "0",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3",
+        "3"
+      ],
+      "total_state_change": 8
+    },
+    "occurrences": 16,
+    "occurrences_watermark": 16,
+    "action": "create",
+    "timestamp": 1507030302,
+    "id": "9fc9e212-5f7a-496a-aa32-a78d9cdc5dfb",
+    "last_state_change": 1507029402,
+    "last_ok": 1507029402,
+    "silenced": false,
+    "silenced_by": []
+  },
+  {
+    "client": {
+      "name": "web03-test",
+      "address": "192.0.2.17",
+      "subscriptions": [
+        "debian",
+        "web-company",
+        "nginx",
+        "company",
+        "client:web03-test"
+      ],
+      "socket": {
+        "bind": "0.0.0.0",
+        "port": 3030
+      },
+      "graphite_server": "graphite00-test.local:79",
+      "version": "1.0.2",
+      "timestamp": 1507030284
+    },
+    "check": {
+      "command": "/opt/sensu-plugins/check_worker_process",
+      "interval": 60,
+      "subscribers": [
+        "web-company"
+      ],
+      "handlers": [
+        "mailer-infra",
+        "slack"
+      ],
+      "occurrences": 3,
+      "refresh": 86400,
+      "name": "worker-process",
+      "issued": 1507030288,
+      "executed": 1507030288,
+      "duration": 0.006,
+      "output": "WARNING - less of 20 worker process in operation\n",
+      "status": 1,
+      "type": "standard",
+      "history": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "total_state_change": 0
+    },
+    "occurrences": 168,
+    "occurrences_watermark": 168,
+    "action": "create",
+    "timestamp": 1507030288,
+    "id": "58793f49-4361-47f4-8ae4-2abfb9084ba6",
+    "last_state_change": 1507020268,
+    "last_ok": 1507020268,
+    "silenced": false,
+    "silenced_by": []
+  }
+]

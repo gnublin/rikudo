@@ -18,16 +18,15 @@ class Event
   end
 
   def self.all
-    sensu = Faraday.new(url: 'http://localhost:4567') do |faraday|
-      faraday.response :json
-      faraday.headers['Content-Type'] = 'application/json'
-      faraday.adapter Faraday.default_adapter
+    events = JSON.parse(File.read('toto.json'))
+    if ENV['RACK_ENV'] == 'production'
+      sensu = Faraday.new(url: 'http://localhost:4567') do |faraday|
+        faraday.response :json
+        faraday.headers['Content-Type'] = 'application/json'
+        faraday.adapter Faraday.default_adapter
+      end
+      events = sensu.get('/events').body
     end
-    events = sensu.get('/events').body
-
-    # for dev
-    # events = JSON.parse(File.read('tata.json'))
-
     events.map! do |t|
       Event.new(t)
     end
@@ -35,7 +34,6 @@ class Event
   end
 
   def self.for_display(sorted: :status, muted: true, reverse: false, threshold: false)
-
     if threshold
       all_results = all.reject{|t| t.threshold.to_i < t.retries.to_i}
     else

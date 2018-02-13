@@ -1,15 +1,20 @@
 source 'https://rubygems.org'
 
+gem 'activesupport', require: 'active_support/all'
 gem 'faraday'
 gem 'faraday_middleware'
+gem 'rspec', require: false
+gem 'rubocop'
 gem 'sinatra', require: 'sinatra/base'
 gem 'sinatra-contrib'
 gem 'slim'
-gem 'rspec', require: false
-gem 'activesupport', require: 'active_support/all'
 
 group :development do
-  gem 'shotgun', require: false
   gem 'pry'
   gem 'pry-byebug'
+  gem 'shotgun', require: false
+end
+
+group :test do 
+  gem 'rack-test'
 end
