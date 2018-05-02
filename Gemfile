@@ -12,9 +12,11 @@ gem 'slim'
 group :development do
   gem 'pry'
   gem 'pry-byebug'
-  gem 'shotgun', require: false
+  gem 'rerun', require: false
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
-group :test do 
+group :test do
   gem 'rack-test'
 end

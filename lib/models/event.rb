@@ -2,7 +2,7 @@ require 'faraday'
 require 'faraday_middleware'
 
 class Event
-  STATUS_NAMES = %w(OK Warning Critical Unknown)
+  STATUS_NAMES = %w[OK Warning Critical Unknown]
 
   attr_reader :status, :muted, :host, :retries, :last_ok, :last_failure, :name, :threshold
 
@@ -25,21 +25,18 @@ class Event
     end
 
     def for_display(sorted: :status, muted: true, reverse: false, threshold: false)
-      if threshold
-        all_results = all.reject{|t| t.threshold.to_i < t.retries.to_i}
-      else
-        all_results = all
-      end
+      all_results =
+        if threshold
+          all.reject { |t| t.threshold.to_i < t.retries.to_i }
+        else
+          all
+        end
 
       all_results = all_results.sort_by(&sorted)
-      if reverse
-        all_results = all_results.reverse
-      end
+      all_results = all_results.reverse if reverse
 
       all_results = all_results.group_by(&:muted)
-      unless muted
-        all_results.delete true
-      end
+      all_results.delete true unless muted
 
       all_results
     end
@@ -47,11 +44,12 @@ class Event
     private
 
     def fetch_events
-      sensu = Faraday.new(url: 'http://localhost:4567') do |faraday|
-        faraday.response :json
-        faraday.headers['Content-Type'] = 'application/json'
-        faraday.adapter Faraday.default_adapter
-      end
+      sensu =
+        Faraday.new(url: 'http://localhost:4567') do |faraday|
+          faraday.response :json
+          faraday.headers['Content-Type'] = 'application/json'
+          faraday.adapter Faraday.default_adapter
+        end
 
       sensu.get('/events').body
     end
