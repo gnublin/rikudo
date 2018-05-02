@@ -15,18 +15,22 @@ describe Rikudo do
   end
 
   describe '/' do
-    before { get '/' }
+    before { get '/', **params }
 
-    it('returns 200 OK') { expect(last_response).to be_ok }
-    it('has "Active checks" title') { expect(last_response.body).to include('Active checks') }
-  end
+    describe 'without parameters' do
+      let(:params) { {} }
 
-  describe '/?muted=0' do
-    before { get '/', muted: 0 }
+      it('returns 200 OK') { expect(last_response).to be_ok }
+      it('has "Active checks" title') { expect(last_response.body).to include('Active checks') }
+    end
 
-    it('returns 200 OK') { expect(last_response).to be_ok }
-    it('does not have "Active checks" title') { expect(last_response.body).not_to include('Active checks') }
-    it('shows active checks') { expect(last_response.body).to include('service-filebeat') }
-    it('hides muted checks') { expect(last_response.body).not_to include('service-logstash') }
+    describe 'with muted filter' do
+      let(:params) { { filters: 'muted' } }
+
+      it('returns 200 OK') { expect(last_response).to be_ok }
+      it('does not have "Active checks" title') { expect(last_response.body).not_to include('Active checks') }
+    end
+
+    # TODO: Complete tests
   end
 end

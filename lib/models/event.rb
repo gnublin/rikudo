@@ -24,27 +24,35 @@ class Event
       end
     end
 
-    def for_display(sorted: :status, muted: true, reverse: false, threshold: false)
-      all_results =
-        if threshold
-          all.reject { |t| t.threshold.to_i < t.retries.to_i }
-        else
-          all
-        end
+    FILTERS = {
+      muted: -> row { row.muted },
+      threshold: -> row { row.threshold > row.retries },
+    }
 
-      all_results = all_results.sort_by(&sorted)
-      all_results = all_results.reverse if reverse
+    # TODO: Add a filter to show only errored checks (not OK)
+    def for_display(order_by: :status, order_dir: :asc, filters: [])
+      all_results = all
 
-      all_results = all_results.group_by(&:muted)
-      all_results.delete true unless muted
+      filters.each do |filter|
+        all_results = all_results.reject!(&FILTERS[filter])
+      end
 
-      all_results
+      if order_dir == :asc
+        all_results.sort_by! &order_by
+      elsif order_dir == :desc
+        all_results.sort! { |a, b| b.public_send(order_by) <=> a.public_send(order_by) }
+      else
+        raise ArgumentError, "Bad parameter for order_dir"
+      end
+
+      all_results.group_by(&:muted)
     end
 
     private
 
     def fetch_events
       sensu =
+        # TODO: Have a config for the URL
         Faraday.new(url: 'http://localhost:4567') do |faraday|
           faraday.response :json
           faraday.headers['Content-Type'] = 'application/json'

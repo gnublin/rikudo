@@ -10,15 +10,21 @@ class Rikudo < Sinatra::Base
     use BetterErrors::Middleware
     BetterErrors.application_root = root
   end
+
+  # TODO: Have a controller
   get '/' do
-    authorized_params = {}
-    authorized_params[:muted] = false if params['muted'] == '0'
-    authorized_params[:reverse] = true if params['reverse'] == '1'
-    authorized_params[:threshold] = true if params['threshold'] == '1'
-    if params[:sorted]
-      authorized_params[:sorted] = params[:sorted].to_sym if SORTABLE_COLUMNS.include? params[:sorted]
+    display_params = {
+      filters: (params['filters'] || '').split(',').map(&:to_sym),
+    }
+
+    if params[:order]
+      column, dir = params[:order].split(':')
+      dir = :asc unless dir == 'desc'
+
+      display_params.merge! order_by: column.to_sym, order_dir: dir.to_sym
     end
-    @events = Event.for_display(**authorized_params)
+
+    @events = Event.for_display(**display_params)
     slim :index
   end
 end
