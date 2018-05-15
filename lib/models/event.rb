@@ -25,24 +25,28 @@ class Event
     end
 
     FILTERS = {
-      muted: -> row { row.muted },
-      threshold: -> row { row.threshold > row.retries },
+      muted: -> (row) { row.muted },
+      threshold: -> (row) { row.threshold > row.retries },
+      status: -> (status, row) { STATUS_NAMES[row.status] != status },
     }
 
-    # TODO: Add a filter to show only errored checks (not OK)
     def for_display(order_by: :status, order_dir: :asc, filters: [])
       all_results = all
 
       filters.each do |filter|
-        all_results = all_results.reject!(&FILTERS[filter])
+        param = filter.split(':')
+        filter_name = param.shift.to_sym
+        filter_proc = FILTERS[filter_name]
+        filter_proc = filter_proc.curry(2).call(*param) if param.any?
+        all_results = all_results.reject(&filter_proc)
       end
 
       if order_dir == :asc
-        all_results.sort_by! &order_by
+        all_results.sort_by!(&order_by)
       elsif order_dir == :desc
         all_results.sort! { |a, b| b.public_send(order_by) <=> a.public_send(order_by) }
       else
-        raise ArgumentError, "Bad parameter for order_dir"
+        raise ArgumentError, 'Bad parameter for order_dir'
       end
 
       all_results.group_by(&:muted)
@@ -52,8 +56,7 @@ class Event
 
     def fetch_events
       sensu =
-        # TODO: Have a config for the URL
-        Faraday.new(url: 'http://localhost:4567') do |faraday|
+        Faraday.new(url: Chamber.env.url_api_events) do |faraday|
           faraday.response :json
           faraday.headers['Content-Type'] = 'application/json'
           faraday.adapter Faraday.default_adapter

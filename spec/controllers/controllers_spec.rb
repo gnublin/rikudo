@@ -31,6 +31,14 @@ describe Rikudo do
       it('does not have "Active checks" title') { expect(last_response.body).not_to include('Active checks') }
     end
 
+    describe 'with muted filter' do
+      let(:params) { { filters: 'muted' } }
+
+      it('returns 200 OK') { expect(last_response).to be_ok }
+      it('does not have "Active checks" title') { expect(last_response.body).not_to include('Active checks') }
+      it('does not have "logstash00-test" host') { expect(last_response.body).not_to include('logstash00-test')}
+    end
+
     # TODO: Complete tests
   end
 end

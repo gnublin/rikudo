@@ -3,7 +3,10 @@ require 'models/event'
 require 'better_errors'
 
 class Rikudo < Sinatra::Base
+  require 'chamber/integrations/sinatra'
+
   set :root, File.expand_path('..', __dir__)
+  register Chamber::Integrations::Sinatra
   SORTABLE_COLUMNS = %w[status name host retries].freeze
 
   configure :development do
@@ -14,14 +17,15 @@ class Rikudo < Sinatra::Base
   # TODO: Have a controller
   get '/' do
     display_params = {
-      filters: (params['filters'] || '').split(',').map(&:to_sym),
+      filters: (params['filters'] || '').split(','),
     }
 
     if params[:order]
       column, dir = params[:order].split(':')
       dir = :asc unless dir == 'desc'
 
-      display_params.merge! order_by: column.to_sym, order_dir: dir.to_sym
+      display_params[:order_by] = column.to_sym
+      display_params[:order_dir] = dir.to_sym
     end
 
     @events = Event.for_display(**display_params)

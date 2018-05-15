@@ -8,6 +8,7 @@ gem 'rubocop'
 gem 'sinatra', require: 'sinatra/base'
 gem 'sinatra-contrib'
 gem 'slim'
+gem 'chamber'
 
 group :development do
   gem 'pry'
