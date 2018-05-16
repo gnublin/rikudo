@@ -27,7 +27,7 @@ class Event
     FILTERS = {
       muted: -> (row) { row.muted },
       threshold: -> (row) { row.threshold > row.retries },
-      status: -> (status, row) { STATUS_NAMES[row.status] != status },
+      status: -> (status, row) { STATUS_NAMES[row.status] != status }
     }
 
     def for_display(order_by: :status, order_dir: :asc, filters: [])

@@ -4,10 +4,9 @@ require 'better_errors'
 
 class Rikudo < Sinatra::Base
   require 'chamber/integrations/sinatra'
-
   set :root, File.expand_path('..', __dir__)
-  register Chamber::Integrations::Sinatra
   SORTABLE_COLUMNS = %w[status name host retries].freeze
+  register Chamber::Integrations::Sinatra
 
   configure :development do
     use BetterErrors::Middleware
@@ -17,7 +16,7 @@ class Rikudo < Sinatra::Base
   # TODO: Have a controller
   get '/' do
     display_params = {
-      filters: (params['filters'] || '').split(','),
+      filters: (params['filters'] || '').split(',')
     }
 
     if params[:order]
