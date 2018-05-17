@@ -3,6 +3,7 @@ AllCops:
   Exclude:
     - db/**/*
     - config/**/*
+    - vendor/**/*
   TargetRubyVersion: 2.4
 
 Naming/AccessorMethodName:
