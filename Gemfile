@@ -5,8 +5,8 @@ gem 'chamber'
 gem 'faraday'
 gem 'faraday_middleware'
 gem 'rspec', require: false
-gem 'rubocop'
-gem 'sinatra', require: 'sinatra/base'
+gem 'rubocop', '0.50.0'
+gem 'sinatra', '~> 2.0.1', require: 'sinatra/base'
 gem 'sinatra-contrib'
 gem 'slim'
 
