@@ -1,6 +1,4 @@
 language: ruby
 script:
+  - bundle exec rubocop
   - bundle exec rspec
-group: stable
-dist: bionic
-os: linux
