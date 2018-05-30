@@ -9,6 +9,7 @@ class Rikudo < Sinatra::Base
   register Chamber::Integrations::Sinatra
 
   set :slim, layout: :_layout
+  set :public_folder, root + "/node_modules"
 
   configure :development do
     use BetterErrors::Middleware

@@ -4,3 +4,4 @@
 .chamber*.pem
 .chamber*.enc.pass
 !.chamber*.pub.pem
+node_modules
