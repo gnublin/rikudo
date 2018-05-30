@@ -8,6 +8,8 @@ class Rikudo < Sinatra::Base
   SORTABLE_COLUMNS = %w[status name host retries].freeze
   register Chamber::Integrations::Sinatra
 
+  set :slim, layout: :_layout
+
   configure :development do
     use BetterErrors::Middleware
     BetterErrors.application_root = root
